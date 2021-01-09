@@ -1,13 +1,18 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:github_stats/pages/following_page.dart';
 import "package:provider/provider.dart";
 
 import "package:flutter/material.dart";
 import 'package:github_stats/providers/user_provider.dart';
 
-void main() => runApp(ChangeNotifierProvider<UserProvider>(
-      child: MaterialApp(home: HomePage(), debugShowCheckedModeBanner: false),
-      create: (context) => UserProvider(),
-    ));
+Future main() async {
+  await DotEnv().load(".env");
+
+  runApp(ChangeNotifierProvider<UserProvider>(
+    child: MaterialApp(home: HomePage(), debugShowCheckedModeBanner: false),
+    create: (context) => UserProvider(),
+  ));
+}
 
 class HomePage extends StatefulWidget {
   // HomePage({Key key}) : super(key: key);
@@ -88,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         errorText: Provider.of<UserProvider>(context).message,
-                        hintText: "Github username",
+                        hintText: "username",
                         hintStyle: TextStyle(color: Colors.grey),
                         border: InputBorder.none),
                   ),
@@ -108,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                             strokeWidth: 2,
                           )
                         : Text(
-                            "Get Following",
+                            "Get Stats",
                             style: TextStyle(color: Colors.white, fontSize: 18),
                           ),
                   ),
