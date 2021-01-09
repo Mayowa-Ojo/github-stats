@@ -59,6 +59,6 @@ class UserProvider with ChangeNotifier {
   }
 
   bool isUser() {
-    return user != null ? true : false;
+    return user != null;
   }
 }

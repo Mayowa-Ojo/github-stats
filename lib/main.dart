@@ -1,5 +1,5 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:github_stats/pages/following_page.dart';
+import 'package:github_stats/pages/stats_page.dart';
 import "package:provider/provider.dart";
 
 import "package:flutter/material.dart";
